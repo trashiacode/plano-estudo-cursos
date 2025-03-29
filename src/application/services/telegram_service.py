@@ -38,12 +38,13 @@ class TelegramService:
         if not PYROGRAM_AVAILABLE:
             print("A biblioteca Pyrogram não está instalada. Use 'pip install pyrogram' para instalar.")
             return
-            
-        # Inicializar cliente quando possível
-        self._inicializar_cliente()
         
-        # Carregar credenciais
+        # Primeiro carregar credenciais do arquivo JSON
         self._load_credentials()
+        
+        # Se não carregou do JSON, tentar inicializar usando config.ini
+        if not self.client_ready:
+            self._inicializar_cliente()
         
     def _inicializar_cliente(self) -> bool:
         """Inicializa o cliente do Telegram se as credenciais estiverem disponíveis"""
@@ -450,6 +451,11 @@ class TelegramService:
                     config = json.load(f)
                     self.api_id = config.get('api_id')
                     self.api_hash = config.get('api_hash')
+                    
+                    # Criar cliente Pyrogram se as credenciais foram carregadas com sucesso
+                    if self.api_id and self.api_hash and PYROGRAM_AVAILABLE:
+                        self.app = Client(self.session_name, api_id=self.api_id, api_hash=self.api_hash)
+                        self.client_ready = True
         except Exception as e:
             print(f"Erro ao carregar credenciais: {e}")
 
