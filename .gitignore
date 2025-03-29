@@ -1,0 +1,73 @@
+# Arquivos temporários Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Arquivos de ambiente
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Arquivos de IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.project
+.pydevproject
+.spyderproject
+.spyproject
+.ropeproject
+
+# Arquivos específicos do projeto
+*.db
+*.sqlite3
+dados_cursos.db
+*.log
+temp/
+logs/
+*.bak
+
+# Dados pessoais e credenciais
+**/credentials.json
+*plano_estudo_telegram.json
+.plano_estudo_telegram.json
+.pyrogram_settings/
+*.session
+**/my_settings.json
+**/users.json
+**/config.ini
+**/secrets.py
+**/auth.json
+
+# Outros
+.DS_Store
+Thumbs.db
+
+# Arquivos específicos de teste ou debug
+test_data/
+debug_logs/
+*_test.*
+*_debug.*
+*.pyc 
